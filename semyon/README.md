@@ -1,2 +1,0 @@
-# semenyk
-hosting for projects

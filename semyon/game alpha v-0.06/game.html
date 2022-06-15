@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+ <meta name="viewport" content="width=device-width,user-scalable=no"/>
+ <title></title>
+</head>
+<body>
+<script type="text/javascript" src="point.js"></script>
+<script type="text/javascript" src="meny.js"></script>
+<script type="text/javascript" src="player.js"></script>
+<script type="text/javascript" src="blockAdd.js"></script>
+<script type="text/javascript" src="text.js"></script>
+<script type="text/javascript" src="inventar.js"></script>
+<script type="text/javascript" src="craft.js"></script>
+<script type="text/javascript">
+	var pjs = new PointJS('2D', 1280, 720, {
+		backgroundColor : 'black'
+	});
+	
+	pjs.system.initFPSCheck();
+	pjs.system.initFullPage(); // for Full Page mode
+	// pjs.system.initFullScreen(); // for Full Screen mode (only Desctop)
+
+	var log = pjs.system.log;
+	var game = pjs.game;
+	var point = pjs.vector.point;
+	var camera = pjs.camera;
+	var brush = pjs.brush;
+	var OOP = pjs.OOP;
+	var math = pjs.math;
+	var size = pjs.vector.size;
+	var math = pjs.math;
+	var random  = math.random;
+	var tiles = pjs.tiles;
+	var zList  = pjs.zList;
+	
+	var key   = pjs.keyControl.initKeyControl();
+	var mouse = pjs.mouseControl.initMouseControl();
+	// var touch = pjs.touchControl.initTouchControl();
+	// var act   = pjs.actionControl.initActionControl();
+
+	var width  = game.getWH().w
+	var height = game.getWH().h
+
+	var lm = pjs.memory.local
+	//pjs.system.setTitle('Memary')
+	var sticks   = 0;
+	var logs     = 0;
+	var stickas  = 0;
+	var wheats   = 0;
+	var bowa     = 0;
+	var gun      = 0;
+	var arrow    = 0;
+	var stones   = 0;
+	var fences   = 0;
+	var hatchet  = 0;
+	
+	var mou      = 2;
+	var tankMove = 1;
+	var buls     = [];
+	
+	var curPos   = point();
+	var linc     = 20
+	var type     = 0
+	var tilas    = [];
+	var hellSlou = [];
+	var lyt      = [];
+	var inventar = [];
+	var goust    = [];
+	var texture  = 2;
+	var x        = 0;
+	var a 		 = 0;
+	var slou     = [];
+	var slou2	 = [];
+	var b        = 1;
+	
+	var s = 64, x, y, fon = [];{
+	for (x= -25; x<25; x++){
+	for (y= -25; y<25; y++){
+	fon.push (
+	game.newImageObject({
+	x : x*s, h : s,
+	y : y*s, w : s,
+	file : 'grass.png'
+	}))}}}
+	var bubbleSort1 = function(data){
+		for(var b = 0; b < data.length; b++){
+			for(var i = 0; i < data.length; i++){
+				var con1, con2;
+				con1 = data[i]
+				con2 = data[b]
+				co1 = hellSlou[i]
+				co2 = hellSlou[b]
+				if (con1.y + con1.h > con2.y + con2.h){
+					data[i] = con2;
+					data[b] = con1;
+					hellSlou[i] = co2;
+					hellSlou[b] = co1;
+					break
+				}
+			}
+		}
+	}
+	
+	for (var b = 0; b<600 ; b++){
+		slou.push(
+			game.newAnimationObject({
+			x : random(-3200/2, 3200/2-32),
+			y : random(-3200/2, 3200/2-64),
+			animation : pjs.tiles.newImage('wheat2.png').getAnimation(0, 0, 123, 120, 2),
+			h : 42, w : 64/10*7,
+			delay : 30
+		}));
+		hellSlou.push(2)
+	}
+	for (var b = 0; b<300 ; b++){
+		slou.push(
+			game.newImageObject({
+			x : random(-3200/2, 3200/2-32),
+			y : random(-3200/2, 3200/2-64),
+			h : 64,
+			w : 32,
+			file : 'PixelTree.png'
+		}));
+		hellSlou.push(10)
+	}
+	for (var b = 0; b<20 ; b++){
+		slou.push(
+			game.newImageObject({
+			x : random(-3200/2, 3200/2-32),
+			y : random(-3200/2, 3200/2-64),
+			h : 32,
+			w : 64,
+			file : 'cobblestone1.png'
+		}));
+		hellSlou.push(10)
+	}
+	for (var b = 0; b<20 ; b++){
+		slou.push(
+			game.newImageObject({
+			x : random(-3200/2, 3200/2-32),
+			y : random(-3200/2, 3200/2-64),
+			h : 32,
+			w : 64,
+			file : 'cobblestone2.png'
+		}));
+		hellSlou.push(10)
+	}
+	
+	car1 = game.newAnimationObject({ 
+		animation : pjs.tiles.newImage('men.png').getAnimation(0, 0, 328/8, 93, 8),
+		x : 0, y : 0, w: 20, h : 60
+	});
+	for (var b = 0; b<1 ; b++){
+		slou.push(new game.newImageObject({
+		x: random(-3200/2, 3200/2-32),
+		y: random(-3200/2, 3200/2-64),
+		h: 60, w: 30, file: 'goust.png'
+		}));
+		hellSlou.push(10)
+	}
+	
+
+
+
+	
+
+	var asdf = 0
+	var tim = 0
+	game.newLoop('game', function () {
+	b = 0
+	bubbleSort1(slou)
+	var playerAtac = game.newRectObject({
+	x : car1.x-90, y : car1.y-70, h : 200, w : 200, fillColor: 'red'
+	})
+	var mouAtac = game.newRectObject({
+	x : mouse.getPosition().x, y : mouse.getPosition().y, w: 0, h : 0
+	})
+	playerAtac.rotate(mouse.getPosition())	
+	
+	movePlay(car1)
+
+	
+	for (var el in fon){
+	    if (fon[el].isDynamicIntersect(camera.getDynamicBox())){
+			fon[el].draw();
+		}
+	}
+	if(key.isDown('LEFT')){
+		bubbleSort1(slou)
+	}
+	OOP.drawArr(buls);
+    addTile(texture, playerAtac);
+	for (el in slou2){
+		if (slou2[el].isDynamicIntersect(camera.getDynamicBox())){
+			slou2[el].draw();
+		}
+	}
+	car1.draw();
+	for (el in slou){
+		if (slou[el].isDynamicIntersect(camera.getDynamicBox())){
+			slou[el].draw();
+		}
+	}
+    for (el in lyt){
+		if (lyt[el].isDynamicIntersect(camera.getDynamicBox())){
+			lyt[el].draw();
+		}
+	}
+	linc -= 0,9
+	brush.onContext(function(ctx){
+		var gradient = ctx.createRadialGradient(width/2, height/2,  500 ,width/2, height/2, 10)
+		gradient.addColorStop(0, '#1C1E45')
+		gradient.addColorStop(1, 'transparent')
+		ctx.beginPath()
+		ctx.fillStyle = gradient
+		ctx.fillRect(0, 0, width, height)
+		//ctx.globalAlpha = 0.98
+		ctx.fill()
+	})
+	meny(mouAtac);
+	text(camera);
+	
+	
+	
+	var plPos = car1.getPositionC();
+
+    OOP.forArr(buls, function (el) {
+		if (el.life) {
+			el.moveAngle(10);
+		}
+	});
+
+    var bul = game.newImageObject({
+		x : car1.getPositionC().x-10, y : plPos.y,
+		h : 5 , w : 50,
+		file : 'arrow.png',
+		userData : {life : 1},
+		angle : playerAtac.getAngle()
+    })
+    var bows = game.newImageObject({
+		file: 'bow.png',
+		x : car1.getPositionC().x-15, y : car1.getPositionC().y-10,
+		h : 30, w : 30,
+		angle : playerAtac.getAngle()+135
+    })
+	
+	if(mouse.isDown('LEFT') 
+	&& camera.getPosition().x <= mouse.getPosition().x 
+	&& camera.getPosition().x+150 >= mouse.getPosition().x
+	){
+		a = Math.floor((mouse.getPosition().y + -camera.getPosition().y)/60)
+		if(mou == 3){
+			for(var g = 0; g < inventar.length; g++){
+				if(a == g && inventar[g].sta == 1 && asdf == 0){
+					inventar[g].sta = 2
+					break
+				}else{
+					if(a == g && inventar[g].sta == 2 && asdf == 0){
+					inventar[g].sta = 1
+					break
+					}
+				}
+			}
+		}
+		asdf = 1
+	}else{asdf = 0}
+    // inve
+	if(mou == 3){
+		var invent = game.newRectObject({
+			x : camera.getPosition().x,
+			y : camera.getPosition().y,
+			h : height,
+			w : 150,
+			fillColor : '#E7B539'
+		})
+		invent.draw()
+		
+		OOP.forArr(lyt, function (el, id) {
+			if (mouse.isPeekObject('LEFT', el) && el.isDynamicIntersect(car1.getDynamicBox()) && inventar.length <= 5){
+				if(el.file == 'stick.png'){
+					lyt.splice(id, 1)
+					inventar.push({id : 1, sta : 1})
+				}
+				if(el.file == 'log.png'){
+					inventar.push({id : 2, sta : 1})
+					lyt.splice(id, 1)
+				}
+				if(el.file == 'wheat3.png'){
+					inventar.push({id : 4, sta : 1})
+					lyt.splice(id, 1)
+				}
+				if(el.file == 'cobblestone1.png'){
+					inventar.push({id : 6, sta : 1})
+					lyt.splice(id, 1)
+				}
+			}
+		})
+		for(i in inventar){
+			if(inventar[i].sta == 2){
+				pjs.brush.drawRect({
+					x : camera.getPosition().x, y : camera.getPosition().y + 60 * i,
+					h : 60, w : 150,
+					fillColor : 'red'
+				})
+			}
+		}
+		for(i in inventar){
+			if(inventar[i].id == 1){
+				pjs.brush.drawImage({
+					file: "stick.png",
+					x : camera.getPosition().x+45, y : camera.getPosition().y + 60 * i,
+					h : 60, w : 40
+				})
+			}
+			if(inventar[i].id == 2){
+				pjs.brush.drawImage({
+					file: "log.png",
+					x : camera.getPosition().x, y : camera.getPosition().y + 60 * i,
+					h : 60, w : 150
+				})			
+			}
+			if(inventar[i].id == 3){
+				pjs.brush.drawImage({
+					file: "sticka.png",
+					x : camera.getPosition().x , y : camera.getPosition().y + 60 * i,
+					h : 10, w : 150
+				})			
+			}
+			if(inventar[i].id == 4){
+				pjs.brush.drawImage({
+					file: "wheat3.png",
+					x : camera.getPosition().x + 45, y : camera.getPosition().y + 60 * i,
+					h : 60, w : 60
+				})			
+			}
+			if(inventar[i].id == 5){
+				pjs.brush.drawImage({
+					file: "bow.png",
+					x : camera.getPosition().x + 45, y : camera.getPosition().y + 60 * i,
+					h : 60, w : 60
+				})			
+			}
+			if(inventar[i].id == 6){
+				pjs.brush.drawImage({
+					file: "cobblestone2.png",
+					x : camera.getPosition().x + 45, y : camera.getPosition().y + 60 * i,
+					h : 60, w : 60
+				})			
+			}
+			if(inventar[i].id == 7){
+				pjs.brush.drawImage({
+					file: "arrow.png",
+					x : camera.getPosition().x, y : camera.getPosition().y + 60 * i,
+					h : 10, w : 150
+				})			
+			}
+			if(inventar[i].id == 8){
+				pjs.brush.drawImage({
+					file: "fence1.png",
+					x : camera.getPosition().x, y : camera.getPosition().y + 60 * i,
+					h : 60, w : 150
+				})			
+			}
+			if(inventar[i].id == 9){
+				pjs.brush.drawImage({
+					file: "hatchet.png",
+					x : camera.getPosition().x+15, y : camera.getPosition().y + 60 * i,
+					h : 60, w : 120
+				})			
+			}	
+		}
+	}
+	//move goust
+	for (el in slou){
+		if (slou[el].file == 'goust.png'){
+			slou[el].moveTo( car1.getPosition(), 3 )
+		}
+	}
+	//inventar
+	sticks = 0
+	logs = 0
+	stickas = 0
+	wheats = 0
+	bowa = 0
+	stones = 0
+	arrow = 0
+	fences = 0
+	hatchet = 0
+	
+	OOP.forArr(inventar, function (el) {
+		if(el.sta == 2){
+			if(el.id == 1){
+				if (sticks == 0){
+					sticks += 1				
+				}
+			}else{if (sticks > 0 && el.id == 1){sticks -= 1}}
+			if(el.id == 2){
+				if ( logs == 0){
+					logs += 1
+				}
+			}else{if (logs > 0 && el.id == 2){logs -= 1}}
+			if(el.id == 3){
+				if (stickas == 0){
+					stickas += 1
+				}
+			}else{if (stickas > 0 && el.id == 3){stickas -= 1}}
+			if(el.id == 4){
+				if (wheats == 0){
+					wheats += 1
+				}
+			}else{if (wheats > 0 && el.id == 4){wheats -= 1}}
+			if(el.id == 5){
+				if (bowa == 0){
+					bowa += 1
+				}
+			}else{if (bowa > 0 && el.id == 5){bowa -= 1}}
+			if(el.id == 6){
+				if (stones == 0){
+					stones += 1
+				}
+			}else{if (stones > 0 && el.id == 6){stones -= 1}}
+			if(el.id == 7){
+				if (arrow == 0){
+					arrow += 1
+				}
+			}else{if (arrow > 0 && el.id == 7){arrow -= 1}}
+			if(el.id == 8){
+				if (fences == 0){
+					fences += 1
+				}
+			}else{if (fences > 0 && el.id == 8){fences -= 1}}
+			if(el.id == 9){
+				if (hatchet == 0){
+					hatchet += 1
+				}
+			}else{if (hatchet > 0 && el.id == 9){hatchet -= 1}}
+		}
+	})
+	// gun arrow
+	for (var i = 0; i < inventar.length; i++) {
+		if(mouse.isDown('LEFT') && mouse.getPosition().x<=camera.getPosition().x+width-150 && mou == 1 && tim == 0)
+		{
+			if(inventar[i].id == 7 && inventar[i].sta == 2 && bowa > 0)
+			{
+				buls.push(bul)
+				inventar.splice(i, 1)
+				break
+			}
+			
+		}
+		
+	}
+	if(mouse.isDown('LEFT')){tim = 1}else{tim = 0}
+	
+	if(bowa > 0){
+		bows.draw()
+	}
+	// hit
+	if (mou == 1 || mou == 2){
+		for (a in slou){
+			for (i in buls){
+				if (slou[a].isDynamicIntersect(buls[i].getDynamicBox())){
+					hellSlou[a] -= 1;
+					buls.splice(i, 1);
+				}
+			}
+		}
+		
+		for(a in hellSlou){
+			if (hellSlou[a] <= 0 && slou[a].file == 'PixelTree.png'){
+				lyt.push(log = game.newImageObject({
+					file: "log.png",
+					x : slou[a].x-10, y : slou[a].y+20,
+					h : 15, w : 45
+				}))
+				lyt.push(stick = game.newImageObject({
+					file: "stick.png",
+					x : slou[a].x-15, y : slou[a].y+20,
+					h : 30, w : 20
+				}))
+				slou.splice(a, 1)
+				hellSlou.splice(a, 1)
+			}
+			if (hellSlou[a] <= 0 && slou[a].h == 42 && slou[a].w == 64/10*7){
+				lyt.push(wheat3 = game.newImageObject({
+					file: "wheat3.png",
+					x : slou[a].x+15, y : slou[a].y+20,
+					h : 20, w : 25
+				}))
+				slou.splice(a, 1)
+				hellSlou.splice(a, 1)
+			}
+			if (hellSlou[a] <= 0){
+				if(slou[a].file == 'cobblestone2.png' || slou[a].file == 'cobblestone1.png'){
+					lyt.push(stone = game.newImageObject({
+						file: "cobblestone1.png",
+						x : slou[a].x+15, y : slou[a].y+20,
+						h : 20, w : 25
+					}))
+					slou.splice(a, 1)
+					hellSlou.splice(a, 1)
+				}
+			}
+			if (hellSlou[a] <= 0 && slou[a].file == 'goust.png'){
+				lyt.push(hatchet = game.newImageObject({
+					file: "hatchet.png",
+					x : slou[a].x+15, y : slou[a].y+20,
+					h : 25, w : 50
+				}))
+				slou.splice(a, 1)
+				hellSlou.splice(a, 1)
+			}
+		}
+	}
+	
+	if (buls.length >= 30){ buls.splice(29, 29)}
+
+
+
+	if(mou == 3){
+		if(sticks > 0){
+			craftingStica(b)
+			b += 1
+		}
+		if(wheats > 0 && stickas > 0){
+			craftingBow(b)
+			b += 1
+		}
+		if (wheats > 0 && stickas > 0 && stones > 0){
+			craftingArrow(b)
+			b += 1
+			craftingHatchet(b)
+			b += 1
+		}
+	}
+	
+	
+	
+	camera.setPositionC(car1.getPositionC());
+    });
+	game.startLoop('game');
+</script>
+</body>
+</html>

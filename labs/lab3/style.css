@@ -2,13 +2,13 @@
 
 body {
     font-family: 'Rubik', sans-serif;
+    text-shadow: 2px 2px 4px black;
     color: white;
     margin: 0;
     width: 100%;
     height: 100vh;
-    background-image: url("../../orders/img/background.jpg");
     background-attachment: fixed;
-    background-color: #222;
+    background-image: url("./img/background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -32,12 +32,6 @@ body {
     margin: 0 auto;
 }
 
-#image {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-}
-
 .content {
     position: relative;
     background: transparent;
@@ -46,13 +40,10 @@ body {
     backdrop-filter: blur(15px);
     padding: 30px;
     margin: 30px;
+    box-shadow: 1px 1px 2px black;
+
 }
 
-table {
-    border: 6px;
-    width: 80px;
-}
-
-td, th {
-    height: 120px;
+a {
+    color: white;
 }

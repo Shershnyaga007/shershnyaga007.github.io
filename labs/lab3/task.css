@@ -1,0 +1,124 @@
+body {
+    background-color: green;
+}
+
+#square1 {
+    border: 2px solid green;
+    padding: 30px;
+    margin: 60px;
+    width: 440px;
+    height: 440px;
+}
+
+#square2 {
+    border: 2px solid gray;
+    padding: 30px;
+    margin: 60px;
+    width: 440px;
+    height: 440px;
+}
+
+#content1 {
+    border: 2px solid gray;
+    padding: 30px;
+    margin: 60px;
+    width: 440px;
+    height: 440px;
+}
+
+#content2 {
+    border: 2px solid fuchsia;
+    padding: 30px;
+    margin: 60px;
+    width: 620px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px black;
+    backdrop-filter: blur(15px);
+}
+
+#body-4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#content3 {
+    max-width: 760px;
+}
+
+#content3-image {
+    float:left;
+    shape-outside: url('./img/background.jpg');
+    width: 200px;
+    height: 200px;
+    shape-margin: 20px;
+    box-shadow: 1px 1px 10px black;
+}
+
+#content3-image1 {
+    float:right;
+    shape-outside: url('./img/background.jpg');
+    width: 200px;
+    height: 200px;
+    shape-margin: 20px;
+    box-shadow: 1px 1px 10px black;
+}
+
+#body-6 {
+    text-color: #008080;
+}
+
+#ul-square {
+    list-style-type: square;
+    color: white; // Не красиво с тем цветом, который надо...
+}
+
+#ul-circle1 {
+
+}
+
+#ul-circle2 {
+    list-style-type: circle;
+}
+
+#ul-none {
+    list-style-type: none;
+}
+
+.ul-triangle {
+    list-style-image: url('./img/t6.png');
+}
+
+.ul-triangle::marker {
+    width: 20px;
+    height: 20px;
+}
+
+#ol1 {
+    list-style-type: lower-greek;
+}
+
+.ul-7 {
+    color: green;
+    text-shadow: none;
+}
+.ul-7:hover {
+    color: gray;
+    text-decoration: underline;
+}
+
+.box-8 {
+    background-color: purple;
+    border: 10px black;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+}
+
+.box-8:hover {
+    background-color: white;
+}
+
+#ul-9 li {
+    list-style-type: none;
+}

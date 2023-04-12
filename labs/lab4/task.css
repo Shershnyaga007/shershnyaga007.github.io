@@ -1,0 +1,83 @@
+#do-content-task {
+    border-radius: 10px;
+    border-color: rgba(255, 255, 255, .8);
+    background-color: rgba(255, 255, 255, .2);
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-self: center;
+    margin: 10px auto;
+    padding: 0;
+    width: 90%;
+    height: 600px;
+    border-width: 2px;
+    border-style: solid dashed dashed dashed;
+}
+
+#content-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-width: 2px;
+    border-style: none none solid none;
+    border-color: rgba(255, 255, 255, .8);
+}
+
+.content-header-image {
+    border-radius: 10px;
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+.content-header-content-1 {
+    justify-content: center;
+    border-style: none dashed none none;
+    border-color: rgba(255, 255, 255, .8);
+}
+
+.content-header-content-2 {
+    padding: 10px;
+    justify-content: center;
+    width: 33%;
+    border-color: rgba(255, 255, 255, .8);
+}
+
+#content-nav {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-width: 2px;
+    border-style: none none solid none;
+    border-color: rgba(255, 255, 255, .8);
+}
+
+a {
+    color: white;
+    margin: 10px;
+}
+
+#content-main {
+    height: 90%;
+    margin: 10px;
+}
+
+#content-footer {
+    border-color: rgba(255, 255, 255, .8);
+    border-style: solid none none none;
+    border-width: 2px;
+    padding: 0 10px;
+}
+
+button {
+    font-family: 'Rubik', sans-serif;
+    color: white;
+    font-size: 12.5px;
+    margin: 2px;
+    padding: 4px 2px;
+    background-color: rgba(255, 255, 255, .4);
+    border-color: rgba(255, 255, 255, .8);
+    border-width: 2px;
+    border-radius: 10px;
+}

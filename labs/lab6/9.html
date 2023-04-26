@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab6</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+  <div class="center">
+    <a href="https://github.com/Shershnyaga007/.shershnyaga007.github.io/tree/main/labs"><img src="../img/github.svg"></a>
+  </div>
+  <h3 class="center">Интерпретируемые языки</h3>
+  <h3 class="center">Лабораторная работа 6</h3>
+  <hr>
+</header>
+<div class="do-content">
+  <div class="content">
+    <div id="main">
+      <h2>Отсчет от 0 до бесконечности:</h2>
+      <p id="count-up">0</p>
+    </div>
+    <div>
+      <h2>Отсчет с кнопкой остановки:</h2>
+      <p id="count-stop">0</p>
+      <button onclick="stopCount()">Остановить</button>
+    </div>
+    <div>
+      <h2>Тикающие часики:</h2>
+      <p id="clock">00:00:00</p>
+    </div>
+    <div>
+      <h2>Таймер обратного отсчета:</h2>
+      <label for="timer-input">Введите количество секунд:</label>
+      <input type="number" id="timer-input">
+      <button onclick="startTimer()">Старт</button>
+      <button onclick="stopTimer()">Стоп</button>
+      <p id="timer">00:00:00</p>
+    </div>
+    <div>
+      <h2>Отсчет до полуночи:</h2>
+      <p id="countdown">0 дней 00:00:00</p>
+    </div>
+    </div>
+  </div>
+</div>
+<footer>
+  <hr>
+  <h4 class="right">Лещук Р.И.</h4>
+  <h4 class="right">Вариант 6</h4>
+</footer>
+
+<script src="js/9.js"></script>
+
+</body>
+</html>

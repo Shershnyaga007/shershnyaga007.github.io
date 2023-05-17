@@ -133,3 +133,17 @@ a {
     color: white;
     border-radius: 10px;
 }
+
+#tasks, #res {
+    margin: 5px;
+}
+
+input {
+    border: 2px solid rgba(255, 255, 255, .4);
+    background-color: rgba(255, 255, 255, .2);
+    padding: 10px;
+    margin-right: 10px;
+    font-family: 'Rubik', sans-serif;
+    color: white;
+    border-radius: 10px;
+}

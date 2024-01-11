@@ -1,0 +1,7 @@
+version: 2.0.0
+update-url: https://github.com/Shershnyaga007/BetterCallFishing/releases/download/v2.0.0-alpha.12/BetterCallFishing-2.0.0-ALPHA-b12.jar
+changes:
+ - "<yellow>1. Add auto update system!"
+ - "<yellow>2. Fix "bettercallfishing reload" command."
+ - "<yellow>3. The error has been fixed when the caught barrel was not being attracted to the player."
+ - "<green> More info: https://github.com/Shershnyaga007/BetterCallFishing/releases/tag/v2.0.0"

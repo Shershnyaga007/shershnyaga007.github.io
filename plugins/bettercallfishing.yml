@@ -1,9 +1,4 @@
-version: 2.0.0
-update-url: https://github.com/Shershnyaga007/BetterCallFishing/releases/download/v2.0.0-b19/BetterCallFishing-2.0.0-b19.jar
+version: 2.0.1
+update-url: https://github.com/Shershnyaga007/BetterCallFishing/releases/download/v2.0.1-b1/BetterCallFishing-2.0.1-b1.jar
 changes:
-- "<yellow>1. Added auto update system!"
-- "<yellow>2. Fix 'bettercallfishing reload' command."
-- "<yellow>3. The error has been fixed when the caught barrel was not being attracted to the player."
-- "<yellow>4. Added multilanguage."
-- "<red> Before updating, check your config.yml and the language file you are using for maximum compatibility."
-- "<green> More info: https://github.com/Shershnyaga007/BetterCallFishing/releases/tag/v2.0.0-b19"
+- "<yellow>Fixed automatic update url."

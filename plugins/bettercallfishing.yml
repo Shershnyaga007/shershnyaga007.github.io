@@ -1,5 +1,5 @@
 version: 2.0.2
-update-url: https://github.com/Shershnyaga007/BetterCallFishing/releases/download/v2.0.2-b20/BetterCallFishing-2.0.2-b20.jar
+update-url: https://github.com/RubyHorizon/BetterCallFishing/releases/download/v2.0.2-b20/BetterCallFishing-2.0.2-b20.jar
 changes:
 - "<yellow>Fix older versions support."
 - "<yellow>Changed Catch event priority (For more compatibility with other plugins)>"

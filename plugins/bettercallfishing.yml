@@ -1,12 +1,4 @@
-version: 2.0.3
-update-url: https://github.com/RubyHorizon/BetterCallFishing/releases/download/v2.0.3/BetterCallFishing-2.0.3-b45.jar
+version: 2.0.5
+update-url: https://github.com/RubyHorizon/BetterCallFishing/releases/download/v2.0.5/BetterCallFishing-2.0.5-b1.jar
 changes:
-- "<yellow>Fixed %current_version% bug."
-- "<yellow>Added German translation (by ZevKev)."
-- "<yellow>Added Czech translation (by Brygy)."
-- "<yellow>Added Ukrainian translation (by Salatosik)."
-- "<yellow>Fixed /bettercallfishing reload command."
-- "<yellow>Added /bcf allias to /bettercallfishing command."
-- "<yellow>Changed name of catched barrel."
-- "<yellow>Added automatic updates of config files."
-- "<yellow>Added a chance to catch a dolphin."
+- "<yellow>Fixed long auto updates find."

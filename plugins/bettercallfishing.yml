@@ -1,7 +1,4 @@
-version: 2.1.0
-update-url: https://github.com/RubyHorizon/BetterCallFishing/releases/download/v2.1.0-rev2/BetterCallFishing-2.1.0-b31.jar
+version: 2.1.1
+update-url: https://github.com/RubyHorizon/BetterCallFishing/releases/download/v2.1.1/BetterCallFishing-2.1.1-b3.jar
 changes:
-- "<yellow>1. Added support for ItemsAdder."
-- "<yellow>2. Barrel configuration moved to a separate file."
-- "<yellow>3. Fixed a bug where caught fish incorrectly interacted with a bucket in hand."
-- "<yellow> More info: <a:https://github.com/RubyHorizon/BetterCallFishing/releases/tag/v2.1.0-rev2>https://github.com/RubyHorizon/BetterCallFishing/releases/tag/v2.1.0-rev2</a>"
+- "<yellow>Fixed barrel_config.yml generation."

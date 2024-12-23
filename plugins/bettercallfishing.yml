@@ -1,4 +1,6 @@
-version: 2.1.1
-update-url: https://github.com/RubyHorizon/BetterCallFishing/releases/download/v2.1.1/BetterCallFishing-2.1.1-b3.jar
+version: 2.2.0
+update-url: https://github.com/RubyHorizon/BetterCallFishing/releases/download/v2.2.0/BetterCallFishing-2.2.0-b38.jar
 changes:
-- "<yellow>Fixed barrel_config.yml generation."
+- "<yellow>1. Added MythicMobs support."
+- "<yellow>2. Added /bcf check for testing your configs."
+- "<yellow>3. Fixed display of messages in the console."
